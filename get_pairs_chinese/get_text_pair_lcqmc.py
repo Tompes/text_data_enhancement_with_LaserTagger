@@ -12,7 +12,7 @@ def process(corpus_folder, raw_file_name, save_folder):
   corpus_list = []
   for name in raw_file_name:
     raw_file = os.path.join(corpus_folder, name)
-    with open(raw_file, "r") as fr:
+    with open(raw_file, "r",encoding="UTF-8") as fr:
       lines = fr.readlines()
 
     for i ,line in enumerate(lines):
@@ -52,13 +52,13 @@ def process(corpus_folder, raw_file_name, save_folder):
       corpus_list.append(corpus)
     print(curLine(), len(corpus_list), "from %s" % raw_file)
   save_file = os.path.join(save_folder, "lcqmc.txt")
-  with open(save_file, "w") as fw:
+  with open(save_file, "w",encoding="UTF-8") as fw:
     fw.writelines(corpus_list)
   print(curLine(), "have save %d to %s" % (len(corpus_list), save_file))
 
 if __name__ == "__main__":
-  corpus_folder = "/home/cloudminds/Mywork/corpus/Chinese_QA/LCQMC"
+  corpus_folder = '''D:\\0CODE\\text-rephrase\\text_data_enhancement_with_LaserTagger\data\LCQMC'''
   raw_file_name = ["train.txt", "dev.txt", "test.txt"]
-  save_folder = "/home/cloudminds/Mywork/corpus/rephrase_corpus"
+  save_folder = "D:\\0CODE\\text-rephrase\\text_data_enhancement_with_LaserTagger\data\ReLCQMC"
   process(corpus_folder, raw_file_name, save_folder)
 
