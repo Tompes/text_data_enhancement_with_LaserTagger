@@ -17,7 +17,7 @@ import tensorflow as tf
 label_map_file = "${OUTPUT_DIR}/label_map.txt"
 enable_swap_tag = True
 vocab_file = "${BERT_BASE_DIR}/vocab.txt"
-max_seq_length=40
+max_seq_length=128
 do_lower_case=False
 saved_model="${SAVED_MODEL_DIR}"
 input_file=""
