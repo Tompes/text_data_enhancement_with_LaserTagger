@@ -25,14 +25,14 @@ export HOST_NAME="wzk" #"cloudminds" #　 　
 EXPERIMENT=wikisplit_experiment
 # To quickly test that model training works, set the number of epochs to a
 # smaller value (e.g. 0.01).
-NUM_EPOCHS=100.0
-export TRAIN_BATCH_SIZE=1024  # 512 OOM   256 OK
+NUM_EPOCHS=10.0
+export TRAIN_BATCH_SIZE=128  # 512 OOM   256 OK
 PHRASE_VOCAB_SIZE=500
 MAX_INPUT_EXAMPLES=1000000
 SAVE_CHECKPOINT_STEPS=200
 export enable_swap_tag=false
 export output_arbitrary_targets_for_infeasible_examples=false
-export WIKISPLIT_DIR="/content/text_data_enhancement_with_LaserTagger/data/LCQMC"
+export WIKISPLIT_DIR="/content/drive/Shareddrives/paperdrive/rephrase/output"
 export OUTPUT_DIR="/content/drive/MyDrive/rephrase/output"
 cd /content/text_data_enhancement_with_LaserTagger
 python phrase_vocabulary_optimization.py \

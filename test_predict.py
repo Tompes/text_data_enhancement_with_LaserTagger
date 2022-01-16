@@ -14,12 +14,12 @@ import tensorflow as tf
  --max_seq_length=${max_seq_length} \
  --saved_model=${SAVED_MODEL_DIR}
 '''
-label_map_file = "${OUTPUT_DIR}/label_map.txt"
+label_map_file = "/content/drive/Shareddrives/paperdrive/rephrase/output/label_map.txt"
 enable_swap_tag = True
-vocab_file = "${BERT_BASE_DIR}/vocab.txt"
+vocab_file = "/content/RoBERTa/vocab.txt"
 max_seq_length=128
 do_lower_case=False
-saved_model="${SAVED_MODEL_DIR}"
+saved_model="/content/drive/Shareddrives/paperdrive/rephrase/output/models/wikisplit_experiment_name/export/TMS"
 input_file=""
 label_map = utils.read_label_map(label_map_file)
 converter = tagging_converter.TaggingConverter(
