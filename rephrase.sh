@@ -32,9 +32,9 @@ MAX_INPUT_EXAMPLES=1000000
 SAVE_CHECKPOINT_STEPS=200
 export enable_swap_tag=false
 export output_arbitrary_targets_for_infeasible_examples=false
-export WIKISPLIT_DIR="/home/${HOST_NAME}/Mywork/corpus/rephrase_corpus"
-export OUTPUT_DIR="${WIKISPLIT_DIR}/output"
-
+export WIKISPLIT_DIR="/content/text_data_enhancement_with_LaserTagger/data"
+export OUTPUT_DIR="/content/drive/MyDrive/rephrase/output"
+cd /content/text_data_enhancement_with_LaserTagger
 #python phrase_vocabulary_optimization.py \
 #  --input_file=${WIKISPLIT_DIR}/train.txt \
 #  --input_format=wikisplit \
@@ -45,7 +45,7 @@ export OUTPUT_DIR="${WIKISPLIT_DIR}/output"
 
 
 export max_seq_length=40 # TODO
-export BERT_BASE_DIR="/home/${HOST_NAME}/Mywork/model/RoBERTa-tiny-clue" # chinese_L-12_H-768_A-12"
+export BERT_BASE_DIR="/content/RoBERTa" # chinese_L-12_H-768_A-12"
 
 #python preprocess_main.py \
 #  --input_file=${WIKISPLIT_DIR}/tune.txt \
