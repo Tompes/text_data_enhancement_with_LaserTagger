@@ -1,8 +1,8 @@
 # 扩充文本匹配的语料  文本复述任务
 #　成都
 # pyenv activate python373tf115
-pip install -i bert-tensorflow==1.0.1
-pip install -i tensorflow==1.15.0
+pip install install bert-tensorflow==1.0.1
+pip install install tensorflow-gpu==1.15.4
 #python -m pip install --upgrade pip -i https://pypi.douban.com/simple
 
 # set gpu id to use
@@ -10,7 +10,7 @@ export CUDA_VISIBLE_DEVICES=0
 
 # 房山
 # pyenv activate python363tf111
-pip install bert-tensorflow==1.0.1
+# pip install bert-tensorflow==1.0.1
 
 #scp -r /home/cloudminds/PycharmProjects/lasertagger-Chinese/predict_main.py  cloudminds@10.13.33.128:/home/cloudminds/PycharmProjects/lasertagger-Chinese
 #scp -r cloudminds@10.13.33.128:/home/wzk/Mywork/corpus/文本复述/output/models/wikisplit_experiment_name /home/cloudminds/Mywork/corpus/文本复述/output/models/
