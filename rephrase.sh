@@ -32,8 +32,8 @@ MAX_INPUT_EXAMPLES=1000000
 SAVE_CHECKPOINT_STEPS=200
 export enable_swap_tag=false
 export output_arbitrary_targets_for_infeasible_examples=false
-export WIKISPLIT_DIR="/content/drive/Shareddrives/paperdrive/rephrase/output"
-export OUTPUT_DIR="/content/drive/MyDrive/rephrase/output"
+export WIKISPLIT_DIR="/content/text_data_enhancement_with_LaserTagger/data/LCQMC"
+export OUTPUT_DIR="/content/drive/Shareddrives/paperdrive/rephrase/output"
 cd /content/text_data_enhancement_with_LaserTagger
 python phrase_vocabulary_optimization.py \
  --input_file=${WIKISPLIT_DIR}/train.txt \
