@@ -118,7 +118,7 @@ python run_lasertagger.py \
  --export_path=${OUTPUT_DIR}/models/${EXPERIMENT}/export
 
 ### Get the most recently exported model directory.
-TIMESTAMP=$(ls "${OUTPUT_DIR}/models/${EXPERIMENT}/export/" | \
+TIMESTAMP=$(ls "${OUTPUT_DIR}/models/${EXPERIMENT}/export" | \
             grep -v "temp-" | sort -r | head -1)
 SAVED_MODEL_DIR=${OUTPUT_DIR}/models/${EXPERIMENT}/export/${TIMESTAMP}
 PREDICTION_FILE=${OUTPUT_DIR}/models/${EXPERIMENT}/pred.tsv
