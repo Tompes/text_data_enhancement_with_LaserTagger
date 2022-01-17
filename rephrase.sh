@@ -44,7 +44,7 @@ python phrase_vocabulary_optimization.py \
  --output_file=${OUTPUT_DIR}/label_map.txt
 
 
-export max_seq_length=128 # TODO
+export max_seq_length=1024 # TODO
 export BERT_BASE_DIR="/content/RoBERTa" # chinese_L-12_H-768_A-12"
 
 # python preprocess_main.py \
