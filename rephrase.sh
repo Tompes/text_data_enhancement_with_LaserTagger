@@ -44,17 +44,17 @@ python phrase_vocabulary_optimization.py \
  --output_file=${OUTPUT_DIR}/label_map.txt
 
 
-export max_seq_length=1024 # TODO
+export max_seq_length=512 # TODO
 export BERT_BASE_DIR="/content/RoBERTa" # chinese_L-12_H-768_A-12"
 
-# python preprocess_main.py \
-#  --input_file=${WIKISPLIT_DIR}/tune.txt \
-#  --input_format=wikisplit \
-#  --output_tfrecord=${OUTPUT_DIR}/tune.tf_record \
-#  --label_map_file=${OUTPUT_DIR}/label_map.txt \
-#  --vocab_file=${BERT_BASE_DIR}/vocab.txt \
-#  --max_seq_length=${max_seq_length} \
-#  --output_arbitrary_targets_for_infeasible_examples=${output_arbitrary_targets_for_infeasible_examples}  # TODO true
+python preprocess_main.py \
+ --input_file=${WIKISPLIT_DIR}/tune.txt \
+ --input_format=wikisplit \
+ --output_tfrecord=${OUTPUT_DIR}/tune.tf_record \
+ --label_map_file=${OUTPUT_DIR}/label_map.txt \
+ --vocab_file=${BERT_BASE_DIR}/vocab.txt \
+ --max_seq_length=${max_seq_length} \
+ --output_arbitrary_targets_for_infeasible_examples=${output_arbitrary_targets_for_infeasible_examples}  # TODO true
 
 python preprocess_main.py \
    --input_file=${WIKISPLIT_DIR}/train.txt \
@@ -68,7 +68,7 @@ python preprocess_main.py \
 
 
 # Check these numbers from the "*.num_examples" files created in step 2.
-export NUM_TRAIN_EXAMPLES=310922
+export NUM_TRAIN_EXAMPLES=41624
 export NUM_EVAL_EXAMPLES=5000
 export CONFIG_FILE=configs/lasertagger_config.json
 export EXPERIMENT=wikisplit_experiment_name
