@@ -25,8 +25,8 @@ export HOST_NAME="wzk" #"cloudminds" #　 　
 EXPERIMENT=wikisplit_experiment
 # To quickly test that model training works, set the number of epochs to a
 # smaller value (e.g. 0.01).
-NUM_EPOCHS=30.0
-export TRAIN_BATCH_SIZE=128  # 512 OOM   256 OK
+NUM_EPOCHS=1000
+export TRAIN_BATCH_SIZE=2  # 512 OOM   256 OK
 PHRASE_VOCAB_SIZE=500
 MAX_INPUT_EXAMPLES=1000000
 SAVE_CHECKPOINT_STEPS=200
