@@ -1,19 +1,10 @@
 # 扩充文本匹配的语料  文本复述任务
 #　成都
-# pyenv activate python373tf115
-# pip install install tensorflow-gpu==1.15.4
-#python -m pip install --upgrade pip -i https://pypi.douban.com/simple
+
 export PATH="/home/aistudio/lib/;"+$PATH
 # set gpu id to use
 export CUDA_VISIBLE_DEVICES=0
 
-# 房山
-# pyenv activate python363tf111
-# pip install bert-tensorflow==1.0.1
-
-#scp -r /home/cloudminds/PycharmProjects/lasertagger-Chinese/predict_main.py  cloudminds@10.13.33.128:/home/cloudminds/PycharmProjects/lasertagger-Chinese
-#scp -r cloudminds@10.13.33.128:/home/wzk/Mywork/corpus/文本复述/output/models/wikisplit_experiment_name /home/cloudminds/Mywork/corpus/文本复述/output/models/
-#watch -n 1 nvidia-smi
 
 start_tm=`date +%s%N`;
 
@@ -31,8 +22,8 @@ MAX_INPUT_EXAMPLES=1000000
 SAVE_CHECKPOINT_STEPS=200
 export enable_swap_tag=false
 export output_arbitrary_targets_for_infeasible_examples=false
-export WIKISPLIT_DIR="/content/text_data_enhancement_with_LaserTagger/data/"
-export OUTPUT_DIR="/content/drive/Shareddrives/paperdrive/rephrase/output"
+export WIKISPLIT_DIR="/home/aistudio/text_data_enhancement_with_LaserTagger-master/data"
+export OUTPUT_DIR="/home/aistudio/OUTPUT"
 cd /content/text_data_enhancement_with_LaserTagger
 python phrase_vocabulary_optimization.py \
  --input_file=${WIKISPLIT_DIR}/train.txt \
@@ -44,7 +35,7 @@ python phrase_vocabulary_optimization.py \
 
 
 export max_seq_length=512 # TODO
-export BERT_BASE_DIR="/content/RoBERTa" # chinese_L-12_H-768_A-12"
+export BERT_BASE_DIR="/home/aistudio/RoBERTa" # chinese_L-12_H-768_A-12"
 
 python preprocess_main.py \
  --input_file=${WIKISPLIT_DIR}/tune.txt \
