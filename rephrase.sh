@@ -1,7 +1,7 @@
 # 扩充文本匹配的语料  文本复述任务
 #　成都
 # pyenv activate python373tf115
-# pip install install tensorflow-gpu==1.15.4
+pip install install tensorflow-gpu==1.15.4 bert-tensorflow==1.0.1
 #python -m pip install --upgrade pip -i https://pypi.douban.com/simple
 export PATH="/home/aistudio/lib/;"+$PATH
 # set gpu id to use
@@ -24,8 +24,8 @@ export HOST_NAME="wzk" #"cloudminds" #　 　
 EXPERIMENT=wikisplit_experiment
 # To quickly test that model training works, set the number of epochs to a
 # smaller value (e.g. 0.01).
-NUM_EPOCHS=1000
-export TRAIN_BATCH_SIZE=2  # 512 OOM   256 OK
+NUM_EPOCHS=1000000
+export TRAIN_BATCH_SIZE=1  # 512 OOM   256 OK
 PHRASE_VOCAB_SIZE=500
 MAX_INPUT_EXAMPLES=1000000
 SAVE_CHECKPOINT_STEPS=200
@@ -74,22 +74,7 @@ export EXPERIMENT=wikisplit_experiment_name
 
 
 
-python run_lasertagger.py \
- --training_file=${OUTPUT_DIR}/train.tf_record \
- --eval_file=${OUTPUT_DIR}/tune.tf_record \
- --label_map_file=${OUTPUT_DIR}/label_map.txt \
- --model_config_file=${CONFIG_FILE} \
- --output_dir=${OUTPUT_DIR}/models/${EXPERIMENT} \
- --init_checkpoint=${BERT_BASE_DIR}/bert_model.ckpt \
- --do_train=true \
- --do_eval=true \
- --train_batch_size=${TRAIN_BATCH_SIZE} \
- --save_checkpoints_steps=200 \
- --max_seq_length=${max_seq_length} \
- --num_train_examples=${NUM_TRAIN_EXAMPLES} \
- --num_eval_examples=${NUM_EVAL_EXAMPLES}
-
-# CUDA_VISIBLE_DEVICES="" nohup python run_lasertagger.py \
+# python run_lasertagger.py \
 #  --training_file=${OUTPUT_DIR}/train.tf_record \
 #  --eval_file=${OUTPUT_DIR}/tune.tf_record \
 #  --label_map_file=${OUTPUT_DIR}/label_map.txt \
@@ -99,11 +84,26 @@ python run_lasertagger.py \
 #  --do_train=true \
 #  --do_eval=true \
 #  --train_batch_size=${TRAIN_BATCH_SIZE} \
-#  --save_checkpoints_steps=${SAVE_CHECKPOINT_STEPS} \
-#  --num_train_epochs=${NUM_EPOCHS} \
+#  --save_checkpoints_steps=200 \
 #  --max_seq_length=${max_seq_length} \
 #  --num_train_examples=${NUM_TRAIN_EXAMPLES} \
-#  --num_eval_examples=${NUM_EVAL_EXAMPLES} > log.txt 2>&1 &
+#  --num_eval_examples=${NUM_EVAL_EXAMPLES}
+
+CUDA_VISIBLE_DEVICES=0 nohup python run_lasertagger.py \
+ --training_file=${OUTPUT_DIR}/train.tf_record \
+ --eval_file=${OUTPUT_DIR}/tune.tf_record \
+ --label_map_file=${OUTPUT_DIR}/label_map.txt \
+ --model_config_file=${CONFIG_FILE} \
+ --output_dir=${OUTPUT_DIR}/models/${EXPERIMENT} \
+ --init_checkpoint=${BERT_BASE_DIR}/bert_model.ckpt \
+ --do_train=true \
+ --do_eval=true \
+ --train_batch_size=${TRAIN_BATCH_SIZE} \
+ --save_checkpoints_steps=${SAVE_CHECKPOINT_STEPS} \
+ --num_train_epochs=${NUM_EPOCHS} \
+ --max_seq_length=${max_seq_length} \
+ --num_train_examples=${NUM_TRAIN_EXAMPLES} \
+ --num_eval_examples=${NUM_EVAL_EXAMPLES} > log.txt 2>&1 &
 
 
 ### 4. Prediction
